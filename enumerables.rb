@@ -72,7 +72,17 @@ module Enumerable
       my_each {|ele| count+=1 if ele}
     end
     count
+  end
 
+  def my_map
+    new_arr = []
+    return to_enum unless block_given?
+
+    my_each do |el|
+      new_arr << yeild el
+    end
+    new_arr
+  end
 
   # pattern matching function
   def match?(ele, para)
