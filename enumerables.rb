@@ -28,29 +28,51 @@ module Enumerable
     new_arr
   end
 
-  def my_all?
-    return to_enum unless block_given?
-    my_each {|el| return false unless yield el}
-    return true
-  end
-
-  def my_any?
-    return to enum unless block_given?
-    my_each {|el| return true if yield el}
-    return false
-    end
-end
-
-
-def is_match?(val, condition)
-  case condition
-    when Regex
-      val ~= condition
-    when Class
-      val.is_a Class
+  def my_all?(para = nil)
+    if block_given?
+      my_each do |el|
+        return false unless yield el
+      end
+    elsif para
+      my_each do |el|
+        return false unless match?(el, para)
+      end
     else
-      val == condition
+      my_each do |el|
+        return false unless el
+      end
+    end
+    true
   end
+
+  def my_any?(para = nil)
+    if block_given?
+      my_each do |el|
+        return true if yield el
+      end
+    elsif para
+      my_each do |ele|
+        return true if match?(ele, para)
+      end
+    else
+      my_each do |el|
+        return true if el
+      end
+    end
+    false
+  end
+
+  # pattern matching function
+  def match?(ele, para)
+    case para
+    when Regexp
+      ele =~ para
+    when Class
+      ele.is_a?(para)
+    else
+      ele == para
+    end
+  end
+
+  # module end
 end
-
-
