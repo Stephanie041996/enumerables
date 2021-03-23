@@ -34,10 +34,23 @@ module Enumerable
     return true
   end
 
-  def my_any
+  def my_any?
     return to enum unless block_given?
     my_each {|el| return true if yield el}
     return false
     end
-
 end
+
+
+def is_match?(val, condition)
+  case condition
+    when Regex
+      val ~= condition
+    when Class
+      val.is_a Class
+    else
+      val == condition
+  end
+end
+
+
