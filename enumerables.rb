@@ -17,4 +17,14 @@ module Enumerable
       i += 1
     end
   end
+
+  def my_select
+    new_arr = []
+    return to_enum unless block_given?
+
+    my_each do |el|
+      new_arr << el if yeild el
+    end
+    new_arr
+  end
 end
