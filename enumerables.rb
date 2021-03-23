@@ -50,6 +50,18 @@ module Enumerable
     false
   end
 
+  def my_count(para = nil)
+    count = 0
+    if block_given?
+        my_each {|ele| count +=1 if yield ele}
+    elsif para
+      my_each {|ele| count+=1 if match?(ele, para)}
+    else
+      my_each {|ele| count+=1 if ele}
+    end
+    count
+  end
+
   # pattern matching function
   def match?(ele, para)
     case para
@@ -64,3 +76,4 @@ module Enumerable
 
   # module end
 end
+
