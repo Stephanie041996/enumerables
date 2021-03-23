@@ -72,12 +72,19 @@ module Enumerable
     count
   end
 
-  def my_map
+  def my_map(proc= nil)
     new_arr = []
+    
     return to_enum unless block_given?
-
+    if block_given?
     my_each do |ele|
       new_arr << yeild(ele)
+     end
+    elsif proc
+      my_each do |ele|
+        new_arr << proc.call(ele)
+      end
+    end
     end
     new_arr
   end
