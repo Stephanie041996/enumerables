@@ -33,5 +33,11 @@ module Enumerable
     my_each {|el| return false unless yield el}
     return true
   end
-end
 
+  def my_any
+    return to enum unless block_given?
+    my_each {|el| return true if yield el}
+    return false
+    end
+
+end
