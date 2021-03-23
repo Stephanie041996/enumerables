@@ -27,4 +27,11 @@ module Enumerable
     end
     new_arr
   end
+
+  def my_all?
+    return to_enum unless block_given?
+    my_each {|el| return false unless yield el}
+    return true
+  end
 end
+
