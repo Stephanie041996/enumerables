@@ -50,6 +50,18 @@ module Enumerable
     false
   end
 
+
+  def my_none?(para = nil)
+    if block_given?
+     my_each {|ele| return false if yield el}
+    elsif para
+      my_each {|ele| return false if match?(ele, para)}
+    else
+      my_each {|ele| return false if el}
+    end
+    true
+  end
+
   # pattern matching function
   def match?(ele, para)
     case para
