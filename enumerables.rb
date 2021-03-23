@@ -82,13 +82,11 @@ module Enumerable
 
   def my_inject(para1 = nil, para2 = nil)
     array = to_a
+    acc = para1 || array[0]
+    i = para1 ? 0 : 1
     if block_given?
-      acc = para1 || array[0]
-      i = para1 ? 0 : 1
       (i...array.length).each { |idx| acc = yield(acc, array[idx]) }
     elsif para1 && para2
-      acc = para1 || array[0]
-      i = para1 ? 0 : 1
       (i...array.length).each { |idx| acc = acc.send(para2, array[idx]) }
     elsif para1
       acc = array[0]
@@ -109,4 +107,8 @@ module Enumerable
       ele == para
     end
   end
+end
+
+def multiply_els(arr)
+  arr.my_inject(:*)
 end
