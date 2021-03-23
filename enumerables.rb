@@ -30,34 +30,22 @@ module Enumerable
 
   def my_all?(para = nil)
     if block_given?
-      my_each do |el|
-        return false unless yield el
-      end
+     my_each {|ele| return false unless yield el}
     elsif para
-      my_each do |el|
-        return false unless match?(el, para)
-      end
+      my_each {|ele| return false unless match?(ele, para)}
     else
-      my_each do |el|
-        return false unless el
-      end
+      my_each {|ele| return false unless el}
     end
     true
   end
 
   def my_any?(para = nil)
     if block_given?
-      my_each do |el|
-        return true if yield el
-      end
+        my_each {|ele| return true if yield ele}
     elsif para
-      my_each do |ele|
-        return true if match?(ele, para)
-      end
+      my_each {|ele| return true if match?(ele, para)}
     else
-      my_each do |el|
-        return true if el
-      end
+      my_each {|ele| return true if ele}
     end
     false
   end
