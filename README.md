@@ -28,9 +28,8 @@ To get a local copy up and running follow these simple example steps.
 - If you cannot understand the instruction above, cppy this: github.com/Stephanie041996/enumerables.git
 - In your computer, open your terminal application, type in git clone followed by the link you copied
 - git clone git@github.com/Stephanie041996/enumerables.git
-- Run git checkout -b your-branch-name. Make your contributions
-- Push your branch up to your forked repository: git push -u origgin your-branch-name
-- Open a Pull Request with a detailed description of the development branch of the original project for a review
+- to run type the command "ruby enumerables.rb" in your terminal
+
 ## Run tests
 
 Run robocop.yml ." to check linter errors
