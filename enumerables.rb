@@ -63,7 +63,7 @@ module Enumerable
     elsif para
       my_each { |ele| count += 1 if match?(ele, para) }
     else
-      length
+      return length
     end
     count
   end
