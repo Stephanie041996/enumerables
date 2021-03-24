@@ -92,7 +92,7 @@ module Enumerable
       acc = array[0]
       (1...array.length).each { |idx| acc = acc.send(para1, array[idx]) }
     else
-      raise LocalJump
+      raise LocalJumpError
     end
     acc
   end
