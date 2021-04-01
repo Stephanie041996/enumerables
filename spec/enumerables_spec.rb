@@ -129,9 +129,14 @@ describe 'Enumerable' do
       it 'should return false if all elements do not match paramter ' do
         expect([1, 2, 3, 'S'].my_any?(Float)).to be false
       end
-
+    end
+    context 'when no parameters are given' do
       it 'should return true if any elements are truthy' do
         expect([1, nil, 1.4].my_any?).to be true
+      end
+
+      it 'should false if all elements are false' do
+        expect([false, nil].my_any?).to be false
       end
 
       it 'should return false if empty' do
