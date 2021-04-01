@@ -232,37 +232,37 @@ describe 'Enumerable' do
     end
   end
 
-  describe "#my_map" do
-    it "should return Enumerator when no proc or block is given" do
-      expect([1,2,3].my_map).to be_a(Enumerable)
+  describe '#my_map' do
+    it 'should return Enumerator when no proc or block is given' do
+      expect([1, 2, 3].my_map).to be_a(Enumerable)
     end
-    context "When proc is given" do
-      it "should return an array mapping every element through calling the proc" do
-        before = [1,2,3,4,5]
-        after = [10,20,30,40,50]
-        proc = Proc.new {|ele| ele*10}
+    context 'When proc is given' do
+      it 'should return an array mapping every element through calling the proc' do
+        before = [1, 2, 3, 4, 5]
+        after = [10, 20, 30, 40, 50]
+        proc = proc { |ele| ele * 10 }
         expect(before.my_map(proc)).to eq(after)
       end
     end
-    context "When block is given" do
-      it "should return an array mapping every element returning from the block" do
-        before = [1,2,3,4,5]
-        after = [10,20,30,40,50]
-        expect(before.my_map {|ele| ele*10}).to eq(after)
+    context 'When block is given' do
+      it 'should return an array mapping every element returning from the block' do
+        before = [1, 2, 3, 4, 5]
+        after = [10, 20, 30, 40, 50]
+        expect(before.my_map { |ele| ele * 10 }).to eq(after)
       end
     end
   end
 
-  describe "#my_inject" do
-    context "When block is given" do
-      context "when parameter is also given" do
-        it "should start from parameter and return reduced enumerable through the block" do
-          expect([1,2,3,4,5].my_inject(10){|sum,ele|sum += ele}).to eq(25)          
+  describe '#my_inject' do
+    context 'When block is given' do
+      context 'when parameter is also given' do
+        it 'should start from parameter and return reduced enumerable through the block' do
+          expect([1, 2, 3, 4, 5].my_inject(10) { |sum, ele| sum + ele }).to eq(25)
         end
       end
-      context "when parameter is not given" do
-        it "should start from first element and return reduced enumerable through the block" do
-          expect([1,2,3,4,5].my_inject{|sum,ele|sum += ele}).to eq(15)          
+      context 'when parameter is not given' do
+        it 'should start from first element and return reduced enumerable through the block' do
+          expect([1, 2, 3, 4, 5].my_inject { |sum, ele| sum + ele }).to eq(15)
         end
       end
     end
