@@ -65,4 +65,43 @@ describe 'Enumerable' do
       end
     end
   end
+
+  describe "#my_all?" do
+    context "when block is given" do 
+      it "should return true if all elements in block returns true" do
+        expect([1,2,3,4].my_all?{|ele|  ele.is_a?(Integer)}).to be true
+      end
+
+      it "should return false if any elements in block returns false" do
+        expect([1,2,3,"S"].my_all?{|ele|  ele.is_a?(Integer)}).to be false
+      end
+    end
+    context "when paramer is given" do
+      it "should return true if all elements match Class parameter" do
+        expect([1,2,3,4].my_all?(Integer)).to be true
+      end
+
+      it "should return true if all elements match Regex" do
+        expect(["a","b","c","d"].my_all?(/[abcd]/)).to be true
+      end
+
+      it "should return true if all elements match other any paramter" do
+        expect([1,1,1,1].my_all?(1)).to be true
+      end
+
+      it "should return false if any elements do not match paramter " do
+        expect([1,2,3,"S"].my_all?(Integer)).to be false
+      end
+
+      it "should return true if all elements are truthy" do
+        expect([1,"a",1.4].my_all?).to be true
+      end
+
+      it "should return true if empty" do
+        expect([].my_all?).to be true
+      end
+    end
+  end  
+
+
 end
