@@ -231,4 +231,10 @@ describe 'Enumerable' do
       end
     end
   end
+
+  describe "#my_map" do
+    it "should return Enumerator when no proc or block is given" do
+      expect([1,2,3].my_map).to be_a(Enumerable)
+    end
+  end
 end
