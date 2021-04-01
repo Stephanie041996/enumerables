@@ -266,11 +266,16 @@ describe 'Enumerable' do
         end
       end
     end
-    context "When block is not given but two parameters are given" do
+    context "When block is not given but starting element and symbol is given" do
         it 'should start from paramter and return reduced enumerable through the symbol at second parameter' do
           expect([1, 2, 3, 4, 5].my_inject(10,:+)).to eq(25)
           expect([1, 2, 3, 4, 5].my_inject(10,:-)).to eq(-5)
           expect([1, 2, 3, 4, 5].my_inject(10,:*)).to eq(1200)
+        end
+    end
+    context "When symbol is given as paramter" do
+        it 'should start from first element and accumulate through the symbol operation' do
+          expect([1, 2, 3, 4, 5].my_inject(:+)).to eq(15)
         end
     end
   end
