@@ -254,6 +254,10 @@ describe 'Enumerable' do
   end
 
   describe '#my_inject' do
+    it "should raise LocalJumpError if no block or parameters" do
+      expect{([1,2,3].my_inject)}.to raise_error LocalJumpError
+    end
+
     context 'When block is given' do
       context 'when parameter is also given' do
         it 'should start from parameter and return reduced enumerable through the block' do
