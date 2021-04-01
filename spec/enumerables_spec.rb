@@ -54,54 +54,89 @@ describe 'Enumerable' do
       end
     end
     context 'when block is given' do
-      it "should return an array after passing each element to block" do
-        after = [2,4]
-        before = [1,2,3,4]
-        expect(before.my_select {|ele| ele.even?}).to eq(after)
+      it 'should return an array after passing each element to block' do
+        after = [2, 4]
+        before = [1, 2, 3, 4]
+        expect(before.my_select(&:even?)).to eq(after)
       end
-      it "should return an an empty array if block condition is false" do
-        before = [1,2,3,4]
-        expect(before.my_select {|ele|}).to be_empty
+      it 'should return an an empty array if block condition is false' do
+        before = [1, 2, 3, 4]
+        expect(before.my_select { false }).to be_empty
       end
     end
   end
 
-  describe "#my_all?" do
-    context "when block is given" do 
-      it "should return true if all elements in block returns true" do
-        expect([1,2,3,4].my_all?{|ele|  ele.is_a?(Integer)}).to be true
+  describe '#my_all?' do
+    context 'when block is given' do
+      it 'should return true if all elements in block returns true' do
+        expect([1, 2, 3, 4].my_all? { |ele| ele.is_a?(Integer) }).to be true
       end
 
-      it "should return false if any elements in block returns false" do
-        expect([1,2,3,"S"].my_all?{|ele|  ele.is_a?(Integer)}).to be false
+      it 'should return false if any elements in block returns false' do
+        expect([1, 2, 3, 'S'].my_all? { |ele| ele.is_a?(Integer) }).to be false
       end
     end
-    context "when paramer is given" do
-      it "should return true if all elements match Class parameter" do
-        expect([1,2,3,4].my_all?(Integer)).to be true
+    context 'when paramer is given' do
+      it 'should return true if all elements match Class parameter' do
+        expect([1, 2, 3, 4].my_all?(Integer)).to be true
       end
 
-      it "should return true if all elements match Regex" do
-        expect(["a","b","c","d"].my_all?(/[abcd]/)).to be true
+      it 'should return true if all elements match Regex' do
+        expect(%w[a b c d].my_all?(/[abcd]/)).to be true
       end
 
-      it "should return true if all elements match other any paramter" do
-        expect([1,1,1,1].my_all?(1)).to be true
+      it 'should return true if all elements match other any paramter' do
+        expect([1, 1, 1, 1].my_all?(1)).to be true
       end
 
-      it "should return false if any elements do not match paramter " do
-        expect([1,2,3,"S"].my_all?(Integer)).to be false
+      it 'should return false if any elements do not match paramter ' do
+        expect([1, 2, 3, 'S'].my_all?(Integer)).to be false
       end
 
-      it "should return true if all elements are truthy" do
-        expect([1,"a",1.4].my_all?).to be true
+      it 'should return true if all elements are truthy' do
+        expect([1, 'a', 1.4].my_all?).to be true
       end
 
-      it "should return true if empty" do
+      it 'should return true if empty' do
         expect([].my_all?).to be true
       end
     end
-  end  
+  end
 
+  describe "#my_any?" do
+    context 'when block is given' do
+      it 'should return true if any elements in block returns true' do
+        expect([1, 2, 3, 4].my_any? { |ele| ele.is_a?(Integer) }).to be true
+      end
 
+      it 'should return false if all elements in block returns false' do
+        expect([1, 2, 3, 4].my_any? { |ele| ele.is_a?(String) }).to be false
+      end
+    end
+    context 'when paramer is given' do
+      it 'should return true if any elements match Class parameter' do
+        expect([1, 2, 3, "s"].my_any?(String)).to be true
+      end
+
+      it 'should return true if any elements match Regex' do
+        expect(%w[a b c d].my_any?(/[abcd]/)).to be true
+      end
+
+      it 'should return true if any elements match other any paramter' do
+        expect([1, 1, 1, 2].my_any?(2)).to be true
+      end
+
+      it 'should return false if all elements do not match paramter ' do
+        expect([1, 2, 3, 'S'].my_any?(Float)).to be false
+      end
+
+      it 'should return true if any elements are truthy' do
+        expect([1,nil , 1.4].my_any?).to be true
+      end
+
+      it 'should return false if empty' do
+        expect([].my_any?).to be false
+      end
+    end
+  end
 end
