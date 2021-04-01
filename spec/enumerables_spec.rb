@@ -1,4 +1,4 @@
-require 'enumerables'
+require_relative './../enumerables'
 
 describe 'Enumerable' do
   describe '#my_each' do
