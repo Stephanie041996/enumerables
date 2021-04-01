@@ -9,6 +9,7 @@ module Enumerable
 
   def my_each_with_index
     return to_enum unless block_given?
+
     i = 0
     my_each do |ele|
       yield ele, i
@@ -18,6 +19,7 @@ module Enumerable
 
   def my_select
     return to_enum unless block_given?
+
     new_arr = []
 
     my_each { |ele| new_arr << ele if yield ele }
