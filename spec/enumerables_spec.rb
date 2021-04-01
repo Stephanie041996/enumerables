@@ -103,7 +103,7 @@ describe 'Enumerable' do
     end
   end
 
-  describe "#my_any?" do
+  describe '#my_any?' do
     context 'when block is given' do
       it 'should return true if any elements in block returns true' do
         expect([1, 2, 3, 4].my_any? { |ele| ele.is_a?(Integer) }).to be true
@@ -115,7 +115,7 @@ describe 'Enumerable' do
     end
     context 'when paramer is given' do
       it 'should return true if any elements match Class parameter' do
-        expect([1, 2, 3, "s"].my_any?(String)).to be true
+        expect([1, 2, 3, 's'].my_any?(String)).to be true
       end
 
       it 'should return true if any elements match Regex' do
@@ -131,7 +131,7 @@ describe 'Enumerable' do
       end
 
       it 'should return true if any elements are truthy' do
-        expect([1,nil , 1.4].my_any?).to be true
+        expect([1, nil, 1.4].my_any?).to be true
       end
 
       it 'should return false if empty' do
@@ -140,8 +140,8 @@ describe 'Enumerable' do
     end
   end
 
-  describe "#my_none?" do
-     context 'when block is given' do
+  describe '#my_none?' do
+    context 'when block is given' do
       it 'should return true if none of the elements in block returns true' do
         expect([1, 2, 3, 4].my_none? { |ele| ele.is_a?(String) }).to be true
       end
@@ -152,7 +152,7 @@ describe 'Enumerable' do
     end
     context 'when paramer is given' do
       it 'should return true if no elements match Class parameter' do
-        expect([1, 2, 3, "s"].my_none?(Float)).to be true
+        expect([1, 2, 3, 's'].my_none?(Float)).to be true
       end
 
       it 'should return true if no elements match Regex' do
@@ -168,11 +168,23 @@ describe 'Enumerable' do
       end
 
       it 'should return true if none elements are truthy' do
-        expect([false,nil].my_none?).to be true
+        expect([false, nil].my_none?).to be true
       end
 
       it 'should return true if empty' do
         expect([].my_none?).to be true
+      end
+    end
+  end
+
+  describe '#my_count' do
+    context 'when block is given' do
+      it 'should return the count of the elements in block returning true' do
+        expect([1, 2, 3, 4].my_count { |ele| ele.is_a?(Integer) }).to eq(4)
+      end
+
+      it 'should return count zero if no elements pass the block returning true' do
+        expect([1, 2, 3, 4].my_count { |ele| ele.is_a?(String) }).to eq(0)
       end
     end
   end
