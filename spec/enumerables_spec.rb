@@ -167,12 +167,16 @@ describe 'Enumerable' do
         expect([1, 2, 3, 4].my_none?(Integer)).to be false
       end
 
+      it 'should return true if empty' do
+        expect([].my_none?).to be true
+      end
+    end
+    context 'when no parameter is given' do
       it 'should return true if none elements are truthy' do
         expect([false, nil].my_none?).to be true
       end
-
-      it 'should return true if empty' do
-        expect([].my_none?).to be true
+      it 'should return false if any elements is truthy' do
+        expect([false, nil, true].my_none?).to be false
       end
     end
   end
