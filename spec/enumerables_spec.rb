@@ -139,4 +139,41 @@ describe 'Enumerable' do
       end
     end
   end
+
+  describe "#my_none?" do
+     context 'when block is given' do
+      it 'should return true if none of the elements in block returns true' do
+        expect([1, 2, 3, 4].my_none? { |ele| ele.is_a?(String) }).to be true
+      end
+
+      it 'should return false if all elements in block returns true' do
+        expect([1, 2, 3, 4].my_none? { |ele| ele.is_a?(Integer) }).to be false
+      end
+    end
+    context 'when paramer is given' do
+      it 'should return true if no elements match Class parameter' do
+        expect([1, 2, 3, "s"].my_none?(Float)).to be true
+      end
+
+      it 'should return true if no elements match Regex' do
+        expect(%w[e f g h].my_none?(/[abcd]/)).to be true
+      end
+
+      it 'should return true if no elements match other none paramter' do
+        expect([1, 1, 1, 2].my_none?(3)).to be true
+      end
+
+      it 'should return false if all elements match parameter ' do
+        expect([1, 2, 3, 4].my_none?(Integer)).to be false
+      end
+
+      it 'should return true if none elements are truthy' do
+        expect([false,nil].my_none?).to be true
+      end
+
+      it 'should return true if empty' do
+        expect([].my_none?).to be true
+      end
+    end
+  end
 end
