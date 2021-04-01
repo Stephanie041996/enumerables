@@ -100,6 +100,7 @@ module Enumerable
     acc
   end
 
+  private
   def match?(ele, para)
     case para
     when Regexp
