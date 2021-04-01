@@ -187,5 +187,31 @@ describe 'Enumerable' do
         expect([1, 2, 3, 4].my_count { |ele| ele.is_a?(String) }).to eq(0)
       end
     end
+    context 'when paramter is given' do
+      it 'should return count of elements matching Class parameter' do
+        expect([1, 2, 3, 's'].my_count(String)).to eq(1)
+      end
+
+      it 'should return count of elements matching Regex' do
+        expect(%w[a b c g].my_count(/[abcd]/)).to eq(3)
+      end
+
+      it 'should return count of elements matching any other paramter' do
+        expect([1, 1, 1, 2].my_count(1)).to eq(3)
+      end
+
+      it 'should return 0 all elements do not match paramter ' do
+        expect([1, 2, 3, 'S'].my_count(Float)).to eq(0)
+      end
+
+      it 'should return 0 for empty enumerables' do
+        expect([].my_count).to eq(0)
+      end
+    end
+    context 'when paramter is not given' do
+      it 'should return length of the array' do
+        expect([1, nil, 1.4].my_count).to eq(3)
+      end
+    end
   end
 end
