@@ -8,5 +8,13 @@ describe "Enumerable" do
         expect(array.my_each).to be_a(Enumerable)
       end
     end
+    context "when block is given" do
+      it "should execute the block for each element" do
+        before = []
+        after = [1,2,3,4,5]
+        after.my_each {|ele| before << ele}
+        expect(before).to eq(after)
+      end
+    end
   end
 end
