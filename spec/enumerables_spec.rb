@@ -244,5 +244,13 @@ describe 'Enumerable' do
         expect(before.my_map(proc)).to eq(after)
       end
     end
+    context "When block is given" do
+      it "should return an array mapping every element returning from the block" do
+        before = [1,2,3,4,5]
+        after = [10,20,30,40,50]
+        expect(before.my_map {|ele| ele*10}).to eq(after)
+      end
+
+    end
   end
 end
