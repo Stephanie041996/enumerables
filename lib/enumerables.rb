@@ -17,8 +17,8 @@ module Enumerable
   end
 
   def my_select
-    new_arr = []
     return to_enum unless block_given?
+    new_arr = []
 
     my_each { |ele| new_arr << ele if yield ele }
     new_arr
