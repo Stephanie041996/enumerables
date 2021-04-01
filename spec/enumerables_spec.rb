@@ -15,6 +15,11 @@ describe "Enumerable" do
         after.my_each {|ele| before << ele}
         expect(before).to eq(after)
       end
+
+      it "should return self with same object id" do
+        array = [1,2,3]
+        expect(array.my_each {|ele| ele}).to be(array)
+      end
     end
   end
 end

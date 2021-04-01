@@ -2,7 +2,9 @@ module Enumerable
   def my_each
     return to_enum unless block_given?
 
-    length.times { |i| yield(self[i]) }
+    for ele in self
+      yield ele
+    end
   end
 
   def my_each_with_index
