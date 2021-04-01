@@ -76,7 +76,7 @@ describe 'Enumerable' do
         expect([1, 2, 3, 'S'].my_all? { |ele| ele.is_a?(Integer) }).to be false
       end
     end
-    context 'when paramer is given' do
+    context 'when parameter is given' do
       it 'should return true if all elements match Class parameter' do
         expect([1, 2, 3, 4].my_all?(Integer)).to be true
       end
@@ -88,13 +88,18 @@ describe 'Enumerable' do
       it 'should return true if all elements match other any paramter' do
         expect([1, 1, 1, 1].my_all?(1)).to be true
       end
-
+    end
+    context 'when no parameter is given' do
       it 'should return false if any elements do not match paramter ' do
         expect([1, 2, 3, 'S'].my_all?(Integer)).to be false
       end
 
       it 'should return true if all elements are truthy' do
         expect([1, 'a', 1.4].my_all?).to be true
+      end
+
+      it 'should return false if any elements is falsy' do
+        expect([1, 'a', nil].my_all?).to be false
       end
 
       it 'should return true if empty' do
