@@ -254,8 +254,8 @@ describe 'Enumerable' do
   end
 
   describe '#my_inject' do
-    it "should raise LocalJumpError if no block or parameters" do
-      expect{([1,2,3].my_inject)}.to raise_error LocalJumpError
+    it 'should raise LocalJumpError if no block or parameters' do
+      expect { [1, 2, 3].my_inject }.to raise_error LocalJumpError
     end
 
     context 'When block is given' do
@@ -270,23 +270,23 @@ describe 'Enumerable' do
         end
       end
     end
-    context "When block is not given but starting element and symbol is given" do
-        it 'should start from paramter and return reduced enumerable through the symbol at second parameter' do
-          expect([1, 2, 3, 4, 5].my_inject(10,:+)).to eq(25)
-          expect([1, 2, 3, 4, 5].my_inject(10,:-)).to eq(-5)
-          expect([1, 2, 3, 4, 5].my_inject(10,:*)).to eq(1200)
-        end
+    context 'When block is not given but starting element and symbol is given' do
+      it 'should start from paramter and return reduced enumerable through the symbol at second parameter' do
+        expect([1, 2, 3, 4, 5].my_inject(10, :+)).to eq(25)
+        expect([1, 2, 3, 4, 5].my_inject(10, :-)).to eq(-5)
+        expect([1, 2, 3, 4, 5].my_inject(10, :*)).to eq(1200)
+      end
     end
-    context "When symbol is given as paramter" do
-        it 'should start from first element and accumulate through the symbol operation' do
-          expect([1, 2, 3, 4, 5].my_inject(:+)).to eq(15)
-        end
+    context 'When symbol is given as paramter' do
+      it 'should start from first element and accumulate through the symbol operation' do
+        expect([1, 2, 3, 4, 5].my_inject(:+)).to eq(15)
+      end
     end
   end
-  it "should return multiplied result from multiply_els method" do
+  it 'should return multiplied result from multiply_els method' do
     def multiply_els(arr)
       arr.my_inject(:*)
     end
-    expect(multiply_els([1,2,3,4])).to eq(24)
+    expect(multiply_els([1, 2, 3, 4])).to eq(24)
   end
 end
