@@ -283,4 +283,10 @@ describe 'Enumerable' do
         end
     end
   end
+  it "should return multiplied result from multiply_els method" do
+    def multiply_els(arr)
+      arr.my_inject(:*)
+    end
+    expect(multiply_els([1,2,3,4])).to eq(24)
+  end
 end
