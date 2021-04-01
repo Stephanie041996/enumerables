@@ -250,7 +250,16 @@ describe 'Enumerable' do
         after = [10,20,30,40,50]
         expect(before.my_map {|ele| ele*10}).to eq(after)
       end
+    end
+  end
 
+  describe "#my_inject" do
+    context "When block is given" do
+      context "when parameter is also given" do
+        it "should start from parameter and return reduced enumerable through the block" do
+          expect([1,2,3,4,5].my_inject(10){|sum,ele|sum += ele}).to eq(25)          
+        end
+      end
     end
   end
 end
