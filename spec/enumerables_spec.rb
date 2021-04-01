@@ -236,5 +236,13 @@ describe 'Enumerable' do
     it "should return Enumerator when no proc or block is given" do
       expect([1,2,3].my_map).to be_a(Enumerable)
     end
+    context "When proc is given" do
+      it "should return an array mapping every element through calling the proc" do
+        before = [1,2,3,4,5]
+        after = [10,20,30,40,50]
+        proc = Proc.new {|ele| ele*10}
+        expect(before.my_map(proc)).to eq(after)
+      end
+    end
   end
 end
