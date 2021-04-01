@@ -226,6 +226,9 @@ describe 'Enumerable' do
       it 'should return length of the array' do
         expect([1, nil, 1.4].my_count).to eq(3)
       end
+      it 'should return 0 for empty enumerables' do
+        expect([].my_count).to eq(0)
+      end
     end
   end
 end
