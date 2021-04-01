@@ -260,6 +260,11 @@ describe 'Enumerable' do
           expect([1,2,3,4,5].my_inject(10){|sum,ele|sum += ele}).to eq(25)          
         end
       end
+      context "when parameter is not given" do
+        it "should start from first element and return reduced enumerable through the block" do
+          expect([1,2,3,4,5].my_inject{|sum,ele|sum += ele}).to eq(15)          
+        end
+      end
     end
   end
 end
