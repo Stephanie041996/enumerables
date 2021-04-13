@@ -138,7 +138,31 @@ it 'should return false if all elements are falsy' do
      expect([nil,false].my_any?).to eq false
     end
 end
+end
 
-
-
+describe "my_none?" do
+     describe "when block is given" do
+          it"returns true if none of the elements meet the condition" do
+               expect([1,1,1].my_none?{|el| el>2}).to eq(true)
+          end
+            it"returns false if any of the elements meet the condition" do
+               expect([1,1,3].my_none?{|el| el>2}).to eq(false)
+            end         
+     end
+     describe "when param is given" do
+          it "returns true if none of the elements meet the condition"  do
+               expect([true, "hey"].my_none?(Integer)).to eq(true)
+          end
+          it "returns false if any of the elements meet the condition"  do
+               expect([1,2].my_none?(Integer)).to eq(false)
+          end
+     end
+     describe 'should return false if any elements are truthy' do
+          it 'should return false ' do
+          expect([1,true, false].my_none?).to eq false
+          end
+          it 'should return true if none elements are truthy' do
+          expect([nil , false].my_none?).to eq true
+          end
+     end
 end
