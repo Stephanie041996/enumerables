@@ -7,12 +7,29 @@ describe '#my_each' do
      arr = []
      ["Sharon", "Leo", "Leila", "Brian", "Arun"].my_each{|el| arr<<el}
      expect(arr).to eq(["Sharon", "Leo", "Leila", "Brian", "Arun"])
-end
-end
+     end
+     end
+
      describe "block is not given" do
           it"returns enumerable" do
           arr = [1,2,3]
           expect(arr.my_each).to be_a(Enumerator)
      end
+     end
 end
+
+
+
+
+describe 'my_each_with_index' do
+describe 'when block is given' do
+         it 'should execute the code for each element with its index' do
+   arr =[]
+          %w[Sharon Leo Leila Brian Arun].my_each_with_index { |ele, index| arr << ele if index.even? }
+          expect(arr).to eq(%w[Sharon Leila  Arun])
+
+end
+end
+
+
 end
