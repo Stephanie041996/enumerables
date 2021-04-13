@@ -2,15 +2,16 @@
 require_relative '../enumerables'
 
 describe '#my_each' do
-     describe "block is given" do
-     it 'execute code for each element inside the array' do
+     describe "when block is given" do
+     it 'executes code for each element inside the array' do
      arr = []
      ["Sharon", "Leo", "Leila", "Brian", "Arun"].my_each{|el| arr<<el}
      expect(arr).to eq(["Sharon", "Leo", "Leila", "Brian", "Arun"])
      end
-     end
+     
+end
 
-     describe "block is not given" do
+     describe "when block is not given" do
           it"returns enumerable" do
           arr = [1,2,3]
           expect(arr.my_each).to be_a(Enumerator)
@@ -38,27 +39,33 @@ describe 'my_each_with_index' do
 
      end
      end
+     end
 
-
-end
-describe "my select" do
+     describe "my select" do
           describe "block is given" do
-               it "executes code for selected elements inside the array" do
+               it " returns an array  passing each element inside the block" do
                arr = [1,2,3,4,5]
-               em_arr = []
+               empty_arr = []
              
-               arr.my_select{|el|em_arr << el if el.odd? }
-               expect(em_arr).to eq([1,3,5])
+               arr.my_select{|el|empty_arr << el if el.odd? }
+               expect(empty_arr).to eq([1,3,5])
+          
           end
           end
-
           describe "block is not given" do
                it"returns Enumerator if block is not given" do
                     arr = [1,2,3,4,5]
                expect(arr.my_select).to be_a(Enumerator)
                end
+          it 'should return an empty array if block condition is not true' do
+               arr = [1,2,3,4,5]
+               expect(arr.my_select { false }).to be_empty
+          end
           end
 end
+
+
+
 
 describe 'my_all' do
 describe 'when block is given' do
