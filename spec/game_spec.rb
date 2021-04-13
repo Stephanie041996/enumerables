@@ -216,3 +216,32 @@ describe 'my_map' do
      end
 
 end
+
+describe "my_inject" do
+     it "calls LocalJumpError" do
+          expect{[1,2,3].my_inject}.to  raise_error LocalJumpError
+     end
+
+     describe"when block is given" do
+          describe "when param is given" do
+               it"returns sum of all arr elemets starting from param" do
+               expect([1,2,3].my_inject(5){|sum, el| sum + el}).to eq(11)
+               end
+          describe "when param is not given" do
+               it"returns sum of all arr elemets" do
+               expect([1,2,3].my_inject{|sum, el| sum + el}).to eq(6)
+               end
+          end
+          end
+     end
+     describe "when block is not given, starting point & symbol is given" do
+          it "should return sum of arr elements starting from param" do
+          expect([1,2,3].my_inject(4, :+)).to eq(10)
+     end
+end
+     describe "when block is not given,only symbol is given" do
+          it "should return sum of arr elements " do
+          expect([1,2,3].my_inject(:+)).to eq(6)
+     end
+end
+end
