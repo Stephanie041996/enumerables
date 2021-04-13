@@ -174,7 +174,7 @@ describe 'my_count' do
       expect([false, nil].my_count(Integer)).to eq(0)
     end
   end
-  describe 'when param is not given' do 
+  describe 'when param is not given' do
     it 'returns arr length if param is not given ' do
       expect([1, 2, 3].my_count).to eq(3)
     end
