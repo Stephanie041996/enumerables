@@ -9,7 +9,10 @@ describe '#my_each' do
      expect(arr).to eq(["Sharon", "Leo", "Leila", "Brian", "Arun"])
 end
 end
-     dscribe "block is not given" do
-          
+     describe "block is not given" do
+          it"returns enumerable" do
+          arr = [1,2,3]
+          expect(arr.my_each).to be_a(Enumerator)
      end
+end
 end
