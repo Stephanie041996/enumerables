@@ -32,7 +32,8 @@ To get a local copy up and running follow these simple example steps.
 
 ## Run tests
 
-Run robocop.yml ." to check linter errors
+- In your terminal, type in "gem install rspec" to download and install the testing framework
+- Run "rspec" for running the tests already written.
 
 ## Authors
 
