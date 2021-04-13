@@ -112,3 +112,5 @@ end
 def multiply_els(arr)
   arr.my_inject(:*)
 end
+
+%w[Sharon Leo Leila Brian Arun].my_each { |friend| puts friend }
