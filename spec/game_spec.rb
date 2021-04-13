@@ -31,5 +31,13 @@ describe 'when block is given' do
 end
 end
 
+describe 'when no block given' do
+     it ' should return enumerator'do
+     arr = [1,2,3]
+     expect(arr.my_each_with_index).to be_a(Enumerator)
+
+end
+end
+
 
 end
