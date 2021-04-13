@@ -202,3 +202,17 @@ describe"my_count" do
       end
      end
 end
+
+describe 'my_map' do
+     describe "block is given" do
+      it 'should return an array mapping all the elements in the orginal array' do
+      expect([1,2,3].my_map{|ele| ele * 2}).to eq [2,4,6]
+     end
+     end
+     describe "block not given" do
+      it " should return enumerator"do
+      expect([1,2,3].my_map).to be_a(Enumerator)
+     end
+     end
+
+end
