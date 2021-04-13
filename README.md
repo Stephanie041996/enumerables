@@ -32,8 +32,8 @@ To get a local copy up and running follow these simple example steps.
 
 ## Run tests
 
-- In your terminal, type in "bundle install" to download and install the testing framework
-- Run "bundle exec rspec" for running the tests already written.
+- In your terminal, type in "gem install rspec" to download and install the testing framework
+- Run "rspec" for running the tests already written.
 
 ## Authors
 
