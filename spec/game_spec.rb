@@ -226,11 +226,8 @@ describe 'my_inject' do
   end
 end
 describe 'multiply_els' do
-  it 'returns multiplied result from multiply_els method' do
-    arr = [1, 2, 3]
-    def multiply_els(arr)
-      arr.my_inject(:*)
-    end
-    expect(multiply_els(arr)).to eq(6)
-  end
+   it 'returns multiplied result from multiply_els method' do
+     arr = [1, 2, 3]
+     expect(multiply_els(arr)).to eq(6)
+   end
 end
