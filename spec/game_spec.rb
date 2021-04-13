@@ -59,3 +59,86 @@ describe "my select" do
                end
           end
 end
+
+describe 'my_all' do
+describe 'when block is given' do
+
+     it'should return true if all elements meet the condition' do
+           arr = [ 1,1,1]
+           result = arr.my_all?{|ele| ele == 1}
+           expect(result).to eq(true)
+     end
+
+     it'should return false if all elements do not meet the condition' do
+          arr = [ 1,1,2]
+          result = arr.my_all?{|ele| ele == 1}
+          expect(result).to eq(false)
+    end
+end
+describe 'when parametor is  given'do
+
+it 'should return true' do
+ arr = [1,1,1]
+ expect(arr.my_all?(Integer)).to be true
+
+end
+
+it 'should return false' do
+     arr = [1,1,1,"hie"]
+     expect(arr.my_all?(Integer)).to be false
+    
+    end
+end
+describe 'when parametor is not given'do
+it 'should return true' do
+     arr = [1,1,1]
+     expect(arr.my_all?()).to be true
+    end
+it 'should return false' do
+ arr = [1,1,1,false]
+ expect(arr.my_all?()).to be false
+
+end
+end
+
+end
+
+describe "my_any?" do
+describe ' when block is given'do
+it'should return true if any parametor meets the conditon'do
+arr = [1,2,3,4,5]
+ expect(arr.my_any?{|ele| ele > 2}).to eq(true)
+end
+
+it'should return false if any parametor meets the conditon'do
+arr = [1,2,3,4]
+ expect(arr.my_any?{|ele| ele > 6}).to eq(false)
+end
+end
+describe' when parametor is given' do
+it 'should return true any of elements meet the condition' do
+arr = [2,3,5,6]
+expect(arr.my_any?(Integer)).to eq true
+end
+
+it 'should return false any of elements do not meet the condition' do
+     arr = [2,3,5,6]
+     expect(arr.my_any?(String)).to eq false
+     end
+
+end
+
+describe 'when parametor is not given' do
+ it 'should return true if any elements are truthy' do
+     
+ expect([1,2,3,"hie"].my_any?).to eq true
+end
+it 'should return false if all elements are falsy' do
+     
+     expect([nil,false].my_any?).to eq false
+    end
+end
+
+
+
+end
